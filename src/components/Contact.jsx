@@ -1,9 +1,8 @@
 import { useState, useRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import contactImg from "../assets/img/contact-img.png";
 import "animate.css";
 import TrackVisibility from "react-on-screen";
-import emailjs from '@emailjs/browser';
+import emailjs from "@emailjs/browser";
 
 export const Contact = () => {
   const form = useRef();
@@ -18,8 +17,8 @@ export const Contact = () => {
   const [formDetails, setFormDetails] = useState(formInitialDetails);
   const [buttonText, setButtonText] = useState("Send");
   const [status, setStatus] = useState({});
-  
-  // Add your EmailJS service ID, template ID, and Public Key here
+
+  // EmailJS credentials
   const emailjsServiceId = "service_3i14kgi";
   const emailjsTemplateId = "template_au6p4wb";
   const emailjsPublicKey = "khKhYZYdA82OW5qzK";
@@ -41,7 +40,7 @@ export const Contact = () => {
         time: new Date().toLocaleString(),
         message: formDetails.message,
         email: formDetails.email,
-        phone: formDetails.phone
+        phone: formDetails.phone,
       };
 
       const result = await emailjs.send(
@@ -75,21 +74,8 @@ export const Contact = () => {
   return (
     <section className="contact" id="connect">
       <Container>
-        <Row className="align-items-center">
-          <Col size={5} md={5}>
-            <TrackVisibility>
-              {({ isVisible }) => (
-                <img
-                  className={
-                    isVisible ? "animate__animated animate__zoomIn" : ""
-                  }
-                  src={contactImg}
-                  alt="Contact Us"
-                />
-              )}
-            </TrackVisibility>
-          </Col>
-          <Col size={12} md={6}>
+        <Row className="justify-content-center">
+          <Col size={12} md={8}>
             <TrackVisibility>
               {({ isVisible }) => (
                 <div
@@ -160,11 +146,7 @@ export const Contact = () => {
 
                       {status.message && (
                         <Col>
-                          <p
-                            className={
-                              status.success ? "success" : "danger"
-                            }
-                          >
+                          <p className={status.success ? "success" : "danger"}>
                             {status.message}
                           </p>
                         </Col>

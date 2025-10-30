@@ -20,10 +20,10 @@ export const Footer = () => {
                             <img src={navIcon3} alt="Instagram" />
                               </a>
             </div>
-            <p>Copyright 2023. All Rights Reserved</p>
+            
           </Col>
         </Row>
       </Container>
     </footer>
   )
-}
+};
